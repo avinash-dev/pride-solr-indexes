@@ -66,16 +66,17 @@ public class QueryBuilder {
                 }
             }
         }
-        if(conditions != null)
+        if(conditions != null) {
             /*
                 Default solr operation is OR.
                 Example => field:(a b) translates into field:(a OR b)
                 we need to make this  field:(a AND b)
              */
-            if(isAndConditionRequired)
+            if (isAndConditionRequired)
                 query.setDefaultOperator(Query.Operator.AND);
 
-        query.addCriteria(conditions);
+            query.addCriteria(conditions);
+        }
 
         Criteria filterCriteria = null;
 
